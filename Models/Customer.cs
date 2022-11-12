@@ -30,5 +30,12 @@ namespace ManagmentSystemAPI.Models
         [Required]
         [StringLength(60)]
         public string Email { get; set; }
+
+        [Required]
+        public int RoleID { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Password { get; set; }
     }
 }

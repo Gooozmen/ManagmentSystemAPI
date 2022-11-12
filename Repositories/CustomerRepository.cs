@@ -27,7 +27,32 @@ namespace ManagmentSystemAPI.Repositories
                     Dni = x.Dni,
                     Phone = x.Phone,
                     Email = x.Email,
+                    Password = x.Password,
+                    UserRole = new UserRole()
+                    {
+                        RoleID = x.RoleID,
+                    }
                 }).ToList();
+        }
+
+        public User ReadSingleCustomerBy(string username)
+        {
+            return db.Customers.
+                Where(x => x.Username == username).
+                Select(x => new User()
+                {
+                    Username = x.Username,
+                    Name = x.Name,
+                    Last_name = x.Last_name,
+                    Dni = x.Dni,
+                    Email = x.Email,
+                    Password = x.Password,
+                    Phone = x.Phone,
+                    UserRole = new UserRole()
+                    {
+                        RoleID = x.RoleID,
+                    }
+                }).Single();
         }
 
         internal Customer CreateCustomer(Customer customer)
@@ -63,10 +88,12 @@ namespace ManagmentSystemAPI.Repositories
             }
         }
 
-        public Customer FindCustomerByUsername(string username)
+        public Customer FindCustomerBy(string username)
         {
-            return db.Customers.Find(username);
+             return db.Customers.Find(username);
         }
+
+        
 
         public bool RemoveCustomer(string username)
         {
