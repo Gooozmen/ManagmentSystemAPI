@@ -1,1 +1,5 @@
 ConnectionString.config
+.vs/
+.vscode/
+bin/
+obj/
